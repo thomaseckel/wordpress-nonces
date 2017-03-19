@@ -1,0 +1,21 @@
+{
+	"name" : "thomaseckel/wordpress-nonces",
+	"description" : "Composer Package that allows the functionality with WordPress Nonces (especially wp_nonce _ * () functions) in an object-oriented environment.",
+	"type" : "package",
+	"keywords" : [
+		"wordpress",
+		"nonce",
+		"wordpress nonce",
+		"security"
+	],
+	"authors" : [{
+			"name" : "Thomas Eckel",
+			"email" : "thomas.eckel@eckel-software.de",
+			"role" : "Developer"
+		}
+	],
+	"require" : {
+		"php" : ">=5.5.0"
+	},
+	"minimum-stability" : "dev"
+}
