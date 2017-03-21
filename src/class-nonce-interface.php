@@ -1,6 +1,6 @@
 <?php
 
-namespace Nonces;
+namespace Eckel\Nonces;
 
 /**
  * Class Nonce_Interface
@@ -19,7 +19,7 @@ interface Nonce_Interface {
 	 * @param string $action
 	 *        	The nonce action.
 	 */
-	public function wp_nonce_ays( $action );
+	public static function wp_nonce_ays( $action );
 	
 	/**
 	 * Retrieve or display nonce hidden field for forms.
@@ -51,7 +51,7 @@ interface Nonce_Interface {
 	 *        	Optional. Whether to display or return hidden form field. Default true.
 	 * @return string Nonce field HTML markup.
 	 */
-	public function wp_nonce_field( $action = -1, $name = '_wpnonce', $referer = true, $echo = true );
+	public static function wp_nonce_field( $action = -1, $name = '_wpnonce', $referer = true, $echo = true );
 	
 	/**
 	 * Retrieve URL with nonce added to URL query.
@@ -64,7 +64,7 @@ interface Nonce_Interface {
 	 *        	Optional. Nonce name. Default '_wpnonce'.
 	 * @return string Escaped URL with nonce action added.
 	 */
-	public function wp_nonce_url( $actionurl, $action = -1, $name = '_wpnonce' );
+	public static function wp_nonce_url( $actionurl, $action = -1, $name = '_wpnonce' );
 	
 	/**
 	 * Verify that correct nonce was used with time limit.
@@ -79,7 +79,7 @@ interface Nonce_Interface {
 	 * @return false|int False if the nonce is invalid, 1 if the nonce is valid and generated between
 	 *         0-12 hours ago, 2 if the nonce is valid and generated between 12-24 hours ago.
 	 */
-	public function wp_verify_nonce( $nonce, $action = -1 );
+	public static function wp_verify_nonce( $nonce, $action = -1 );
 	
 	/**
 	 * Creates a cryptographic token tied to a specific action, user, user session,
@@ -89,7 +89,7 @@ interface Nonce_Interface {
 	 *        	Scalar value to add context to the nonce.
 	 * @return string The token.
 	 */
-	public function wp_create_nonce( $action = -1 );
+	public static function wp_create_nonce( $action = -1 );
 	
 	/**
 	 * Makes sure that a user was referred from another admin page.
@@ -104,7 +104,7 @@ interface Nonce_Interface {
 	 * @return false|int False if the nonce is invalid, 1 if the nonce is valid and generated between
 	 *         0-12 hours ago, 2 if the nonce is valid and generated between 12-24 hours ago.
 	 */
-	public function check_admin_referer( $action = -1, $query_arg = '_wpnonce' );
+	public static function check_admin_referer( $action = -1, $query_arg = '_wpnonce' );
 	
 	/**
 	 * Verifies the AJAX request to prevent processing requests external of the blog.
@@ -121,7 +121,7 @@ interface Nonce_Interface {
 	 * @return false|int False if the nonce is invalid, 1 if the nonce is valid and generated between
 	 *         0-12 hours ago, 2 if the nonce is valid and generated between 12-24 hours ago.
 	 */
-	public function check_ajax_referer( $action = -1, $query_arg = false, $die = true );
+	public static function check_ajax_referer( $action = -1, $query_arg = false, $die = true );
 	
 	/**
 	 * Retrieve or display referer hidden field for forms.
@@ -133,5 +133,5 @@ interface Nonce_Interface {
 	 *        	Optional. Whether to echo or return the referer field. Default true.
 	 * @return string Referer field HTML markup.
 	 */
-	public function wp_referer_field( $echo = true );
+	public static function wp_referer_field( $echo = true );
 }
