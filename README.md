@@ -3,8 +3,6 @@ Composer Package that allows the functionality with WordPress Nonces (especially
 
 More about nonces in WordPress: https://codex.wordpress.org/Function_Reference/wp_nonce_url
 
-The class Environment delivers the data which are normally delivered by WordPress. In this example the class deliveres the data directly. In practical use with WordPress we have to change it to read the data fron WordPress.
-
 ## Installation
 ```shell
 	composer require thomaseckel/wordpress-nonces
@@ -13,7 +11,8 @@ The class Environment delivers the data which are normally delivered by WordPres
 ## How to use
 
 Initialization.
-The class Environment delivers the data
+
+The class Environment delivers the data which are normally delivered by WordPress. In this example the class deliveres the data directly. In practical use with WordPress we have to change it to read the data fron WordPress.
 ```php
 	$environment = new Eckel\Nonces\Environment();
 	$nonce_object = new Eckel\Nonces\Nonce();
