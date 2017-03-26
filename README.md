@@ -12,7 +12,7 @@ More about nonces in WordPress: https://codex.wordpress.org/Function_Reference/w
 
 Initialization.
 
-The class Environment delivers the data which are normally delivered by WordPress. In this example the class deliveres the data directly. In practical use with WordPress we have to change it to read the data fron WordPress.
+The class Environment delivers the data which are normally delivered by WordPress. In this example the class deliveres the data directly. In practical use with WordPress we have to change it to read the data from WordPress.
 ```php
 	$environment = new Eckel\Nonces\Environment();
 	$nonce_object = new Eckel\Nonces\Nonce();
