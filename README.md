@@ -1,6 +1,8 @@
 # wordpress-nonces
 Composer Package that allows the functionality with WordPress Nonces (especially wp_nonce _ * () functions) in an object-oriented environment.
 
+More about nonces in WordPress: https://codex.wordpress.org/Function_Reference/wp_nonce_url
+
 ## Installation
 ```shell
 	composer require thomaseckel/wordpress-nonces
@@ -8,35 +10,43 @@ Composer Package that allows the functionality with WordPress Nonces (especially
 
 ## How to use
 
-Create nonce
+Initialization
 ```php
-	$nonce = \Eckel\Nonces\Nonce_Wrapper::wp_create_nonce();
+	$environment = new Eckel\Nonces\Environment();
+	$nonce_object = new Eckel\Nonces\Nonce();
+	$nonce_object->set_environment( $environment );
+```
+Set an new user ID (example '9999')
+```php
+	$environment->set_user_id( '9999' );
+```	
+
+Create nonce for an action (example 'action-1')
+```php
+	$nonce = $nonce_object->wp_create_nonce( 'action-1' );
 ```
 
-Verify nonce
+Verify nonce (example for a nonce created with action 'action-1')
 ```php
-	$isValid = \Eckel\Nonces\Nonce_Wrapper::wp_verify_nonce($nonce);
+	$isValid = $nonce_object->wp_verify_nonce( $nonce, 'action-1' );
 ```
 
-Create nonce hidden input
+Create nonce hidden input (example with action 'action-1' and nonce name '_wpnonce')
 ```php
-	\Eckel\Nonces\Nonce_Wrapper::wp_nonce_field();
+	$field = $nonce_object->wp_nonce_field( 'action-1', '_wpnonce', false, false );
 ```
 
-Generate nonce URL:
+Generate nonce URL (example with url 'http://action-1' and action 'action-1')
 ```php
-	$url = \Eckel\Nonces\Nonce_Wrapper::wp_nonce_url('http://www.google.com');
+	$nonce_url = $nonce_object->wp_nonce_url('http://action-1', 'action-1');
 ```
 
 Check if request was been referred from an admin screen:
 ```php
-	$admin = \Eckel\Nonces\Nonce_Wrapper::check_admin_referer();
+	$admin = $nonce_object->check_admin_referer();
 ```
 
-Verifies the AJAX request to prevent processing requests external of the blog.
-```php
-	$ajax = \Eckel\Nonces\Nonce_Wrapper::check_ajax_referer();
-```
+
 
 ## Current Status
-This package is still in the development mode. The unit tests are not yet working correctly.
+The described functions are working and tested with phpunit.
