@@ -133,7 +133,7 @@ class Nonce {
 	 * @param bool $echo Optional. Whether to display or return hidden form field. Default true.
 	 * @return string Nonce field HTML markup.
 	 */
-	function wp_nonce_field( $action = -1, $name = "_wpnonce", $referer = true, $echo = true ) {
+	public function wp_nonce_field( $action = -1, $name = "_wpnonce", $referer = true, $echo = true ) {
 
 		$name = $this->formatter->esc_attr( $name );
 		$nonce_field = '<input type="hidden" id="' . $name . '" name="' . $name . '" value="' . $this->wp_create_nonce( $action ) . '" />';
@@ -156,7 +156,7 @@ class Nonce {
 	 * @param bool $echo Optional. Whether to echo or return the referer field. Default true.
 	 * @return string Referer field HTML markup.
 	 */
-	function wp_referer_field( $echo = true ) {
+	public function wp_referer_field( $echo = true ) {
 
 		$referer_field = '<input type="hidden" name="_wp_http_referer" value="' . $this->formatter->esc_attr( $this->formatter->wp_unslash( $this->environment->get_request_uri() ) ) . '" />';
 		
@@ -174,7 +174,7 @@ class Nonce {
 	 * @param string $name Optional. Nonce name. Default '_wpnonce'.
 	 * @return string Escaped URL with nonce action added.
 	 */
-	function wp_nonce_url( $actionurl, $action = -1, $name = '_wpnonce' ) {
+	public function wp_nonce_url( $actionurl, $action = -1, $name = '_wpnonce' ) {
 
 		$actionurl = str_replace( '&amp;', '&', $actionurl );
 		return $this->formatter->esc_html( $this->add_query_arg( $name, $this->wp_create_nonce( $action ), $actionurl ) );
